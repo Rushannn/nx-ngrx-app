@@ -1,4 +1,5 @@
 import { Route } from '@angular/router';
+import { authGuard } from '@mycab/auth/data-access';
 
 export const appRoutes: Route[] = [
   {
@@ -10,6 +11,7 @@ export const appRoutes: Route[] = [
     path: 'profile',
     loadComponent: () => import('@mycab/profile/feature-profile').then((m) => m.ProfileComponent),
     data: { breadcrumb: 'profile' },
+    canActivate: [authGuard],
   },
   {
     path: 'login',
@@ -20,5 +22,6 @@ export const appRoutes: Route[] = [
     path: 'tickets',
     loadComponent: () => import('@mycab/tickets/feature-tickets').then((m) => m.TicketsComponent),
     data: { breadcrumb: 'tickets' },
+    canActivate: [authGuard],
   },
 ];

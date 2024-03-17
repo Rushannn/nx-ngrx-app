@@ -9,6 +9,8 @@ import { API_URL } from "@mycab/core/http-client";
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { authEffects, authFeature } from "@mycab/auth/data-access";
+import { provideRouterStore } from '@ngrx/router-store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,9 +18,15 @@ export const appConfig: ApplicationConfig = {
     provideRouter(appRoutes),
     importProvidersFrom(TuiRootModule),
     provideHttpClient(),
-    !environment.production ? provideStoreDevtools() : [],
     { provide: API_URL, useValue: environment.api_url },
-    // provideStore(),
-    // provideEffects(),
-],
+    provideStore({
+      auth: authFeature.reducer,
+    }),
+    provideStoreDevtools({
+      maxAge: 25,
+      logOnly: !isDevMode()
+    }),
+    provideEffects(authEffects),
+    provideRouterStore()
+  ],
 };
