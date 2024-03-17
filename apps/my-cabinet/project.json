@@ -8,19 +8,33 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/my-cabinet",
         "index": "apps/my-cabinet/src/index.html",
         "browser": "apps/my-cabinet/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/my-cabinet/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/my-cabinet/src/favicon.ico",
-          "apps/my-cabinet/src/assets"
+          "apps/my-cabinet/src/assets",
+          {
+            "glob": "**/*",
+            "input": "node_modules/@taiga-ui/icons/src",
+            "output": "assets/taiga-ui/icons"
+          }
         ],
-        "styles": ["apps/my-cabinet/src/styles.scss"],
+        "styles": [
+          "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
+          "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
+          "node_modules/@taiga-ui/styles/taiga-ui-global.less",
+          "apps/my-cabinet/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -42,7 +56,13 @@
         "development": {
           "optimization": false,
           "extractLicenses": false,
-          "sourceMap": true
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/my-cabinet/src/environments/environment.ts",
+              "with": "apps/my-cabinet/src/environments/environment.development.ts"
+            }
+          ]
         }
       },
       "defaultConfiguration": "production"
@@ -70,7 +90,9 @@
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/my-cabinet/jest.config.ts"
       }
