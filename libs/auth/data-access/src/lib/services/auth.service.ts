@@ -2,7 +2,7 @@ import { Injectable, inject } from "@angular/core";
 import { ApiService } from "@mycab/core/http-client"
 import { LoginUser } from "../models/loginUser";
 import { Observable } from "rxjs";
-import { UserResponse } from "../models/user";
+import { UserData, UserResponse } from "../models/user";
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -12,7 +12,7 @@ export class AuthService {
     return this.apiService.post<UserResponse, LoginUser>('/auth/login', credentials);
   }
 
-  getMe(): Observable<UserResponse> {
-    return this.apiService.get<UserResponse>('/auth/me',);
+  getMe(): Observable<UserData> {
+    return this.apiService.get<UserData>('/auth/me',);
   }
 }

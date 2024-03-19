@@ -1,1 +1,1 @@
-export * from './lib/tickets/tickets.component';
+export * from './lib/tickets.component';

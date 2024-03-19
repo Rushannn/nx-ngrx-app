@@ -59,7 +59,7 @@ export const getMe$ = createEffect(
         () =>
           authService.getMe()
             .pipe(
-              map(({ data }) => {
+              map((data) => {
                 return authActions.getMeSuccess({ user: data })
               }),
               catchError(error => of(authActions.getMeFailure({ error })))
