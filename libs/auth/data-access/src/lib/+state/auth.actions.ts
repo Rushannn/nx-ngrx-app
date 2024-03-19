@@ -1,16 +1,16 @@
 import { createActionGroup, props, emptyProps } from '@ngrx/store';
-import { UserData, UserResponse } from '../models/user';
+import { UserData } from '../models/user';
 import { LoginUser } from '../models/loginUser';
 
 export const authActions = createActionGroup({
   source: 'Auth',
   events: {
-    getUser: emptyProps(),
-    getUserFailure: props<{ error: Error }>(),
-    getUserSuccess: props<{ user: UserResponse }>(),
+    getMe: emptyProps(),
+    getMeFailure: props<{ error: Error }>(),
+    getMeSuccess: props<{ user: UserData }>(),
     login: props<{ credentials: LoginUser }>(),
     loginFailure: props<{ error: Error }>(),
-    loginSuccess: props<{ data: UserData }>(),
+    loginSuccess: props<{ user: UserData }>(),
     logout: emptyProps(),
   },
 });

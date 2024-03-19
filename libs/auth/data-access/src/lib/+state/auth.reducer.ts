@@ -31,15 +31,15 @@ export const authFeature = createFeature({
   name: 'auth',
   reducer: createReducer(
     authInitialState,
-    on(authActions.login, (state): AuthState => ({
+    on(authActions.login, authActions.getMe, (state): AuthState => ({
       ...state,
       status: Status.IN_PROGRESS
     })),
-    on(authActions.getUserFailure, authActions.logout, (): AuthState => authInitialState),
-    on(authActions.loginSuccess, (state, action): AuthState => ({
+    on(authActions.getMeFailure, authActions.logout, (): AuthState => authInitialState),
+    on(authActions.loginSuccess, authActions.getMeSuccess, (state, action): AuthState => ({
       ...state,
       loggedIn: true,
-      user: action.data
+      user: action.user
     })),
     on(authActions.loginFailure, (state): AuthState => ({
       ...state,

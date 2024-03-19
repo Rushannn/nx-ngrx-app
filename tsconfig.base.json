@@ -21,6 +21,7 @@
       "@mycab/profile/feature-profile": [
         "libs/profile/feature-profile/src/index.ts"
       ],
+      "@mycab/tickets/data-access": ["libs/tickets/data-access/src/index.ts"],
       "@mycab/tickets/feature-tickets": [
         "libs/tickets/feature-tickets/src/index.ts"
       ]

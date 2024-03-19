@@ -11,4 +11,8 @@ export class AuthService {
   login(credentials: LoginUser): Observable<UserResponse> {
     return this.apiService.post<UserResponse, LoginUser>('/auth/login', credentials);
   }
+
+  getMe(): Observable<UserResponse> {
+    return this.apiService.get<UserResponse>('/auth/me',);
+  }
 }
