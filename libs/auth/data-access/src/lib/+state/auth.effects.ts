@@ -38,10 +38,10 @@ export const login$ = createEffect(
   { functional: true },
 );
 
-export const loginOrGetMeSuccess$ = createEffect(
+export const loginSuccess$ = createEffect(
   (actions$ = inject(Actions), localStorageJwtService = inject(LocalStorageJwtService), router = inject(Router)) => {
     return actions$.pipe(
-      ofType(authActions.loginSuccess, authActions.getMeSuccess),
+      ofType(authActions.loginSuccess),
       tap((action) => {
         localStorageJwtService.setItem(action.user.auth_token);
         router.navigateByUrl('/');
