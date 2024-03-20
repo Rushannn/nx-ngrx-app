@@ -1,1 +1,6 @@
-<p>tickets-item works!</p>
+<div class="ticket-card">
+  <h3>{{ ticket.title }}</h3>
+  <p>ID: {{ ticket.id }}</p>
+  <p>Дата создания: {{ ticket.created_at | date:'medium' }}</p>
+</div>
+

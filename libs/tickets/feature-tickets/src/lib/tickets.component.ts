@@ -1,12 +1,16 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { ticketsActions } from '@mycab/tickets/data-access';
+import { ticketsActions, ticketsFeature } from '@mycab/tickets/data-access';
+import { TicketsItemComponent } from './tickets-item/tickets-item.component';
 
 @Component({
   selector: 'lib-tickets',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    TicketsItemComponent
+  ],
   templateUrl: './tickets.component.html',
   styleUrl: './tickets.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,9 +18,10 @@ import { ticketsActions } from '@mycab/tickets/data-access';
 export class TicketsComponent implements OnInit{
   private readonly store = inject(Store);
 
+  tickets$ = this.store.select(ticketsFeature.selectTickets);
+  loading$ = this.store.select(ticketsFeature.selectLoading);
+
   ngOnInit(): void {
     this.store.dispatch(ticketsActions.getTickets())
   }
-
-
 }

@@ -11,6 +11,7 @@ import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { authEffects, authFeature, tokenInterceptor } from "@mycab/auth/data-access";
 import { provideRouterStore } from '@ngrx/router-store';
+import { ticketsEffects, ticketsFeature } from "@mycab/tickets/data-access";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,12 +22,13 @@ export const appConfig: ApplicationConfig = {
     { provide: API_URL, useValue: environment.api_url },
     provideStore({
       auth: authFeature.reducer,
+      tickets: ticketsFeature.reducer
     }),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode()
     }),
-    provideEffects(authEffects),
+    provideEffects(authEffects, ticketsEffects),
     provideRouterStore()
   ],
 };

@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Ticket } from '@mycab/tickets/data-access';
 
 @Component({
   selector: 'lib-tickets-item',
@@ -9,4 +10,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './tickets-item.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TicketsItemComponent {}
+export class TicketsItemComponent {
+  @Input() ticket!: Ticket;
+}

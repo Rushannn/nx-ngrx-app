@@ -1,1 +1,10 @@
-<p>tickets works!</p>
+<div class="content">
+  @if(tickets$ | async; as tickets) {
+    @for(ticket of tickets; track ticket) {
+      <lib-tickets-item [ticket]="ticket"></lib-tickets-item>
+    }
+    @empty {
+      <h3>There are no tickets.</h3>
+    }
+  }
+</div>

@@ -3,13 +3,13 @@ import { Ticket } from "../models/ticket";
 import { ticketsActions } from "./tickets.actions";
 
 export interface TicketsState {
-  data: Ticket[]
+  tickets: Ticket[]
   loading: boolean
   loaded: boolean
 }
 
 const ticketsInitState: TicketsState = {
-  data: [],
+  tickets: [],
   loading: false,
   loaded: false
 }
@@ -23,7 +23,7 @@ export const ticketsFeature = createFeature({
       loading: true
     })),
     on(ticketsActions.getTicketsSuccess, (state, action): TicketsState => ({
-      data: action.tickets,
+      tickets: action.tickets,
       loading: false,
       loaded: true
     })),
