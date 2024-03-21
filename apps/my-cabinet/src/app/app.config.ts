@@ -1,7 +1,6 @@
 import { provideAnimations } from "@angular/platform-browser/animations";
-import { TuiRootModule } from "@taiga-ui/core";
 import { ApplicationConfig, importProvidersFrom, isDevMode } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { appRoutes } from './app.routes';
 import { provideHttpClient, withInterceptors } from "@angular/common/http";
 import { environment } from "../environments/environment";
@@ -10,25 +9,27 @@ import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { authEffects, authFeature, tokenInterceptor } from "@mycab/auth/data-access";
-import { provideRouterStore } from '@ngrx/router-store';
+import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { ticketsEffects, ticketsFeature } from "@mycab/tickets/data-access";
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
+  providers: ([
     provideAnimations(),
-    provideRouter(appRoutes),
-    importProvidersFrom(TuiRootModule),
+    provideRouter(appRoutes, withComponentInputBinding()),
     provideHttpClient(withInterceptors([tokenInterceptor])),
     { provide: API_URL, useValue: environment.api_url },
     provideStore({
       auth: authFeature.reducer,
-      tickets: ticketsFeature.reducer
+      tickets: ticketsFeature.reducer,
+      router: routerReducer
     }),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: !isDevMode()
     }),
     provideEffects(authEffects, ticketsEffects),
-    provideRouterStore()
-  ],
+    provideRouterStore(),
+    provideAnimationsAsync(),
+  ]),
 };

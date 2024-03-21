@@ -1,5 +1,4 @@
-import { TuiRootModule, TuiDialogModule, TuiAlertModule } from "@taiga-ui/core";
-import { Component, OnInit, computed, inject } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from "./layout/header/header.component";
 import { Store } from "@ngrx/store";
@@ -11,10 +10,7 @@ import { filter, take } from "rxjs";
   standalone: true,
   imports: [
     RouterModule,
-    TuiRootModule,
-    TuiDialogModule,
-    TuiAlertModule,
-    HeaderComponent
+    HeaderComponent,
   ],
   selector: 'app-root',
   template: `

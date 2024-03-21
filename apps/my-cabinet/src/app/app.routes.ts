@@ -24,4 +24,10 @@ export const appRoutes: Route[] = [
     data: { breadcrumb: 'tickets' },
     canActivate: [authGuard],
   },
+  {
+    path: 'ticket',
+    loadChildren: () => import('@mycab/tickets/ticket-detail').then((m)=> m.TICKET_DEATIL_ROUTES),
+    data: { breadcrumb: 'ticket' },
+    canActivate: [authGuard],
+  },
 ];

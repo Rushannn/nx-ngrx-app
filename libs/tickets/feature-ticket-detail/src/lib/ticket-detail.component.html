@@ -1,0 +1,53 @@
+@if(ticket(); as ticket){
+<!-- {{ ticket | json }} -->
+<div class="content">
+  <mat-card class="ticket-detail-card">
+    <mat-card-content>
+      <form>
+        <div class="form-field">
+          <div><strong>ID:</strong> {{ ticket.id }}</div>
+        </div>
+
+        <div class="form-field">
+          <div>
+            <strong>Дата создания:</strong>
+            {{ ticket.created_at | date : 'medium' }}
+          </div>
+        </div>
+
+        <div class="form-field">
+          <div><strong>Название тикета:</strong> {{ ticket.title }}</div>
+        </div>
+        <div class="form-field">
+          <mat-form-field>
+            <mat-label>Срок исполнения</mat-label>
+            <input
+              matInput
+              [matDatepicker]="picker"
+              [(ngModel)]="ticket.deadline"
+              name="deadline"
+              (ngModelChange)="onDeadlineChange($event)"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="form-field">
+          <mat-checkbox
+            [(ngModel)]="ticket.completed"
+            name="completed"
+            (change)="onCompletedChange($event)"
+          >
+            Выполнено
+          </mat-checkbox>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+}

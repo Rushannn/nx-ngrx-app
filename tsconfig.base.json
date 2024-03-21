@@ -18,12 +18,16 @@
       "@mycab/auth/data-access": ["libs/auth/data-access/src/index.ts"],
       "@mycab/auth/feature-auth": ["libs/auth/feature-auth/src/index.ts"],
       "@mycab/core/http-client": ["libs/core/http-client/src/index.ts"],
+      "@mycab/core/router-store": ["libs/core/router-store/src/index.ts"],
       "@mycab/profile/feature-profile": [
         "libs/profile/feature-profile/src/index.ts"
       ],
       "@mycab/tickets/data-access": ["libs/tickets/data-access/src/index.ts"],
       "@mycab/tickets/feature-tickets": [
         "libs/tickets/feature-tickets/src/index.ts"
+      ],
+      "@mycab/tickets/ticket-detail": [
+        "libs/tickets/feature-ticket-detail/src/index.ts"
       ]
     }
   },

@@ -22,18 +22,11 @@
         "inlineStyleLanguage": "scss",
         "assets": [
           "apps/my-cabinet/src/favicon.ico",
-          "apps/my-cabinet/src/assets",
-          {
-            "glob": "**/*",
-            "input": "node_modules/@taiga-ui/icons/src",
-            "output": "assets/taiga-ui/icons"
-          }
+          "apps/my-cabinet/src/assets"
         ],
         "styles": [
-          "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
-          "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",
-          "node_modules/@taiga-ui/styles/taiga-ui-global.less",
-          "apps/my-cabinet/src/styles.scss"
+          "apps/my-cabinet/src/styles.scss",
+          "@angular/material/prebuilt-themes/deeppurple-amber.css"
         ],
         "scripts": []
       },
