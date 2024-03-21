@@ -9,7 +9,7 @@ export const appRoutes: Route[] = [
   },
   {
     path: 'profile',
-    loadComponent: () => import('@mycab/profile/feature-profile').then((m) => m.ProfileComponent),
+    loadChildren: () => import('@mycab/profile/feature-profile').then((m) => m.PROFILE_ROUTES),
     data: { breadcrumb: 'profile' },
     canActivate: [authGuard],
   },

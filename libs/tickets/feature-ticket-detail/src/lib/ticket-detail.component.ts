@@ -38,8 +38,6 @@ export class TicketDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.ticketDetailStore.getTicket(this.id());
-    console.log('id', this.id());
-    console.log('ticket', this.ticket());
   }
 
   editing = signal(false);

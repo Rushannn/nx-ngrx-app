@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@mycab-profile-data-access": ["libs/profile/data-access/src/index.ts"],
       "@mycab/auth/data-access": ["libs/auth/data-access/src/index.ts"],
       "@mycab/auth/feature-auth": ["libs/auth/feature-auth/src/index.ts"],
       "@mycab/core/http-client": ["libs/core/http-client/src/index.ts"],

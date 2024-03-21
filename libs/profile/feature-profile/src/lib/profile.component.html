@@ -1,0 +1,25 @@
+<div class="content">
+  @if( profileData(); as profile){
+  <mat-card>
+    <mat-card-content>
+      <div><strong>ID:</strong> {{ profile.id }}</div>
+      <div><strong>Username:</strong> {{ profile.username }}</div>
+      <div><strong>Name:</strong> {{ profile.name }}</div>
+      <div><strong>Surname:</strong> {{ profile.surname }}</div>
+      <div><strong>Birthday:</strong> {{ profile.birthday | date }}</div>
+      <mat-form-field>
+        <mat-label>City</mat-label>
+        <mat-select [(value)]="profile.city">
+          <mat-option *ngFor="let city of cities" [value]="city">{{
+            city
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+  </mat-card>
+  } @else {
+    @if(status() === 'loading'){
+      loading...
+    } @else { profile not found}
+  }
+</div>
