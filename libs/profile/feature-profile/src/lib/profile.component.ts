@@ -32,4 +32,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.profileState.getProfile(this.id());
   }
+
+  onCityChange(event: any) {
+    console.log('City changed to:', event.value);
+  }
 }

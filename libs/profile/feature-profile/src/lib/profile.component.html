@@ -9,7 +9,7 @@
       <div><strong>Birthday:</strong> {{ profile.birthday | date }}</div>
       <mat-form-field>
         <mat-label>City</mat-label>
-        <mat-select [(value)]="profile.city">
+        <mat-select [(value)]="profile.city" (selectionChange)="onCityChange($event)">
           <mat-option *ngFor="let city of cities" [value]="city">{{
             city
           }}</mat-option>
